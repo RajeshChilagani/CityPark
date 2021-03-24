@@ -54,8 +54,8 @@ TArray<ANavPoint*> ANavGraph::GeneratePath(ANavPoint* Source, ANavPoint* Destina
 			{
 				for (int i = 0; i < IsGoal->Connections.Num(); ++i)
 				{
-					NavQueue.Enqueue(IsGoal->Connections[i].To); 
-					ParentMap.FindOrAdd(IsGoal->Connections[i].To, IsGoal);
+					NavQueue.Enqueue(IsGoal->Connections[i]); 
+					ParentMap.FindOrAdd(IsGoal->Connections[i], IsGoal);
 				}
 				Explored.Add(IsGoal);
 			}

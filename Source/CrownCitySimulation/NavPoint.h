@@ -44,5 +44,5 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere)
-	TArray<FConnection> Connections;
+	TArray<ANavPoint*> Connections;
 };
