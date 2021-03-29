@@ -60,6 +60,11 @@ TArray<ANavPoint*> ANavGraph::GeneratePath(ANavPoint* Source, ANavPoint* Destina
 				Explored.Add(IsGoal);
 			}
 		}
+		if (IsGoal != Destination)
+		{
+			return Path;
+		}
+
 		while (IsGoal != Source)
 		{
 			Path.Add(IsGoal);
