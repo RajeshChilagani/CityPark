@@ -12,11 +12,13 @@ USTRUCT(BlueprintType)
 struct FConnection
 {
 	GENERATED_BODY()
-	UPROPERTY(EditAnywhere)
-	ANavPoint* From;
+	//UPROPERTY(EditAnywhere)
+	//ANavPoint* From;
 	UPROPERTY(EditAnywhere)
 	ANavPoint* To;
 	//Cost
+	UPROPERTY(EditAnywhere)
+	float Cost = 0;
 };
 
 
@@ -45,4 +47,14 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	TArray<ANavPoint*> Connections;
+
+	UPROPERTY(EditAnywhere)
+	TArray<FConnection> F_Connections;
+
+	UPROPERTY(EditAnywhere)
+	float CostSoFar = 0;
+
+	UPROPERTY(EditAnywhere)
+	float EstimatedTotalCost = 0;
+	
 };

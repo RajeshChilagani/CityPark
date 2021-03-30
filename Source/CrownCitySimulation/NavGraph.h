@@ -29,7 +29,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	TArray<ANavPoint*> GeneratePath(ANavPoint* Source, ANavPoint* Destination);
 
+	UFUNCTION(BlueprintCallable)
+	TArray<ANavPoint*> GenerateAStarPath(ANavPoint* Source, ANavPoint* Destination);
 	/*UFUNCTION(BlueprintCallable)
 	ANavPoint* FindClosestNavPoint() const ;*/
-
+	ANavPoint* FindSmallestCostElement(TArray<ANavPoint*> List);
 };

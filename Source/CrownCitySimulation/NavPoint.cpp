@@ -16,6 +16,13 @@ ANavPoint::ANavPoint()
 	Point = CreateDefaultSubobject<USphereComponent>(TEXT("NavPoint"));
 	Point->SetupAttachment(RootComponent);
 
+	if (F_Connections.Num() != 0) {
+
+		for(int i = 0;i < F_Connections.Num();i++)
+		{
+			F_Connections[i].Cost = FVector::Dist(GetActorLocation(), F_Connections[i].To->GetActorLocation());
+		}
+	}
 }
 
 // Called when the game starts or when spawned
