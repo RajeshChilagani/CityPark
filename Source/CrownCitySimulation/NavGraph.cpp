@@ -35,6 +35,35 @@ void ANavGraph::Tick(float DeltaTime)
 
 TArray<ANavPoint*> ANavGraph::GeneratePath(ANavPoint* Source, ANavPoint* Destination)
 {
+	switch (PathFinder)
+	{
+	case EPathFinder::BFS:
+		return GenerateBFSPath(Source, Destination);
+	case EPathFinder::AStar:
+		return GenerateAStarPath(Source, Destination);
+	default:
+		break;
+	}
+	return TArray<ANavPoint*>();
+}
+
+TArray<FVector> ANavGraph::GeneratePathInPositions(ANavPoint* Source, ANavPoint* Destination)
+{
+	TArray<ANavPoint*> PathInNavPoints = GeneratePath(Source,Destination);
+	TArray<FVector> PathInPositions;
+	for (ANavPoint* NP : PathInNavPoints)
+	{
+		if (NP)
+		{
+			PathInPositions.Add(NP->GetActorLocation());
+		}
+	}
+
+	return PathInPositions;
+}
+
+TArray<ANavPoint*> ANavGraph::GenerateBFSPath(ANavPoint* Source, ANavPoint* Destination)
+{
 	TArray<ANavPoint*> Path;
 	TMap<ANavPoint*, ANavPoint*> ParentMap;
 	TSet<ANavPoint*> Explored;

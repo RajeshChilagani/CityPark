@@ -76,6 +76,11 @@ void ACrownCitySimulationCharacter::SetupPlayerInputComponent(class UInputCompon
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &ACrownCitySimulationCharacter::OnResetVR);
 }
 
+void ACrownCitySimulationCharacter::SetNPCState(ENPCState NewState)
+{
+	NPCState = NewState;
+}
+
 
 void ACrownCitySimulationCharacter::OnResetVR()
 {

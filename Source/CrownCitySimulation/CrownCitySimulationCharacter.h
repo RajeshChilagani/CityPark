@@ -6,6 +6,14 @@
 #include "GameFramework/Character.h"
 #include "CrownCitySimulationCharacter.generated.h"
 
+UENUM(BlueprintType)
+enum class ENPCState : uint8
+{
+	Idle,
+	Goto,
+	IsMoving,
+	Work,
+};
 UCLASS(config=Game)
 class ACrownCitySimulationCharacter : public ACharacter
 {
@@ -68,5 +76,11 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+	//AI
+	UFUNCTION(BlueprintCallable)
+	void SetNPCState(ENPCState NewState);
+
+	ENPCState NPCState = ENPCState::Goto;
 };
 

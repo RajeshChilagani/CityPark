@@ -45,10 +45,15 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(EditAnywhere)
+//Debug
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bShowDebug = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<ANavPoint*> Connections;
 
-	UPROPERTY(EditAnywhere)
+//AStar
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<FConnection> F_Connections;
 
 	UPROPERTY(EditAnywhere)

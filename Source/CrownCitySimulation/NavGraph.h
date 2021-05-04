@@ -6,6 +6,13 @@
 #include "GameFramework/Actor.h"
 #include "NavGraph.generated.h"
 
+UENUM(BlueprintType)
+enum class EPathFinder : uint8
+{
+	BFS UMETA(DisplayeName = "BreadthFirstSearch"),
+	AStar UMETA(DisplayName = "AStar"),
+};
+
 class ANavPoint;
 UCLASS(Blueprintable, BlueprintType)
 class CROWNCITYSIMULATION_API ANavGraph : public AActor
@@ -30,8 +37,22 @@ public:
 	TArray<ANavPoint*> GeneratePath(ANavPoint* Source, ANavPoint* Destination);
 
 	UFUNCTION(BlueprintCallable)
-	TArray<ANavPoint*> GenerateAStarPath(ANavPoint* Source, ANavPoint* Destination);
+	TArray<FVector> GeneratePathInPositions(ANavPoint* Source, ANavPoint* Destination);
+	
 	/*UFUNCTION(BlueprintCallable)
 	ANavPoint* FindClosestNavPoint() const ;*/
 	ANavPoint* FindSmallestCostElement(TArray<ANavPoint*> List);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bShowDebug = false;
+
+	UPROPERTY(EditAnywhere)
+	EPathFinder PathFinder = EPathFinder::BFS;
+
+private:
+	UFUNCTION()
+	TArray<ANavPoint*> GenerateBFSPath(ANavPoint* Source, ANavPoint* Destination);
+
+	UFUNCTION()
+	TArray<ANavPoint*> GenerateAStarPath(ANavPoint* Source, ANavPoint* Destination);
 };
