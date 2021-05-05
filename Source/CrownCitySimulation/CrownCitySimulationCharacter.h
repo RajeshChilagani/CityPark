@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "CrownCitySimulationCharacter.generated.h"
+class ADestination;
 
 UENUM(BlueprintType)
 enum class ENPCState : uint8
@@ -81,6 +82,32 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SetNPCState(ENPCState NewState);
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	ENPCState NPCState = ENPCState::Goto;
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void PickWorkToDo();
+
+	virtual void PickWorkToDo_Implementation() 
+	{
+		return;
+	};
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void FindDestinationToMove();
+
+	virtual void FindDestinationToMove_Implementation()
+	{
+		return;
+	};
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TSubclassOf<ADestination> TargetDestination;
+
+	UPROPERTY(BlueprintReadWrite)
+	class ADestinationManager* DM;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool bHasDestinationToMove = false;
 };
 
