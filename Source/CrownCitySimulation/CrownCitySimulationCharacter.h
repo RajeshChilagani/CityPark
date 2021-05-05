@@ -83,7 +83,7 @@ public:
 	void SetNPCState(ENPCState NewState);
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	ENPCState NPCState = ENPCState::Goto;
+	ENPCState NPCState = ENPCState::Idle;
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void PickWorkToDo();
