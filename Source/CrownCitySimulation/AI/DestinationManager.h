@@ -28,7 +28,12 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<ADestination*> Destinations;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<ADestination*> SchoolDestinations;
+
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	ADestination* GetRandomDestination();
 
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+		ADestination* GetRandomSchoolDestination();
 };

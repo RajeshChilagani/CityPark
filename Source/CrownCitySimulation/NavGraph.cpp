@@ -33,6 +33,8 @@ void ANavGraph::Tick(float DeltaTime)
 
 }
 
+PRAGMA_DISABLE_OPTIMIZATION
+
 TArray<ANavPoint*> ANavGraph::GeneratePath(ANavPoint* Source, ANavPoint* Destination)
 {
 	switch (PathFinder)
@@ -104,6 +106,8 @@ TArray<ANavPoint*> ANavGraph::GenerateBFSPath(ANavPoint* Source, ANavPoint* Dest
 	}
 	return Path;
 }
+
+PRAGMA_ENABLE_OPTIMIZATION
 
 TArray<ANavPoint*> ANavGraph::GenerateAStarPath(ANavPoint* Source, ANavPoint* Destination) {
 	TArray<ANavPoint*> OpenList;

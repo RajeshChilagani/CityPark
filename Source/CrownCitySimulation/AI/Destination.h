@@ -6,6 +6,14 @@
 #include "GameFramework/Actor.h"
 #include "Destination.generated.h"
 
+UENUM(BlueprintType)
+
+enum class EDestinationType : uint8
+{
+	School	UMETA(DisplayName = "School"),
+	Office  UMETA (DisplayName = "Office")
+};
+
 UCLASS()
 class CROWNCITYSIMULATION_API ADestination : public AActor
 {
@@ -30,6 +38,9 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FVector DestinationLocaton;
+		FVector DestinationLocaton;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = DestinationType)
+		EDestinationType destinationType = EDestinationType::Office;
 
 };

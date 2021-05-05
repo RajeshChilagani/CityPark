@@ -3,6 +3,8 @@
 
 #include "DestinationManager.h"
 
+#include "Destination.h"
+
 // Sets default values
 ADestinationManager::ADestinationManager()
 {
@@ -34,6 +36,26 @@ ADestination* ADestinationManager::GetRandomDestination()
 	}
 
 	UE_LOG(LogTemp, Warning, TEXT("NoDestinations"));
+	return nullptr;
+}
+
+ADestination * ADestinationManager::GetRandomSchoolDestination()
+{
+	for (int i = 0; i < Destinations.Num(); i++)
+	{
+		if (Destinations[i]->destinationType == EDestinationType::School) {
+			SchoolDestinations.Add(Destinations[i]);
+			
+		}
+	}
+
+	if (SchoolDestinations.Num() > 0)
+	{
+		int RandomIndex = FMath::RandRange(0, SchoolDestinations.Num() - 1);
+		return SchoolDestinations[RandomIndex];
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("NoSchoolDestinations"));
 	return nullptr;
 }
 
