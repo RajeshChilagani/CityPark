@@ -11,7 +11,9 @@ UENUM(BlueprintType)
 enum class EDestinationType : uint8
 {
 	School	UMETA(DisplayName = "School"),
-	Office  UMETA (DisplayName = "Office")
+	Office  UMETA (DisplayName = "Office"),
+	Hospital  UMETA(DisplayName = "Hospital"),
+	Stadium   UMETA(DisplayName = "Stadium"),
 };
 
 UCLASS()
@@ -30,7 +32,7 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	class USceneComponent* SceneRoot;
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	class UStaticMeshComponent* Mesh;
 
 public:	

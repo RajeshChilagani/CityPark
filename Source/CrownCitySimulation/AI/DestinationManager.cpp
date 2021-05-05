@@ -59,3 +59,63 @@ ADestination * ADestinationManager::GetRandomSchoolDestination()
 	return nullptr;
 }
 
+ADestination * ADestinationManager::GetRandomOfficeDestination()
+{
+	for (int i = 0; i < Destinations.Num(); i++)
+	{
+		if (Destinations[i]->destinationType == EDestinationType::Office) {
+			OfficeDestinations.Add(Destinations[i]);
+
+		}
+	}
+
+	if (OfficeDestinations.Num() > 0)
+	{
+		int RandomIndex = FMath::RandRange(0, OfficeDestinations.Num() - 1);
+		return OfficeDestinations[RandomIndex];
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("NoOfficeDestinations"));
+	return nullptr;
+}
+
+ADestination * ADestinationManager::GetRandomHospitalDestination()
+{
+	for (int i = 0; i < Destinations.Num(); i++)
+	{
+		if (Destinations[i]->destinationType == EDestinationType::Hospital) {
+			HospitalDestinations.Add(Destinations[i]);
+
+		}
+	}
+
+	if (HospitalDestinations.Num() > 0)
+	{
+		int RandomIndex = FMath::RandRange(0, HospitalDestinations.Num() - 1);
+		return HospitalDestinations[RandomIndex];
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("NoHospitalDestinations"));
+	return nullptr;
+}
+
+ADestination * ADestinationManager::GetRandomStadiumDestination()
+{
+	for (int i = 0; i < Destinations.Num(); i++)
+	{
+		if (Destinations[i]->destinationType == EDestinationType::Stadium) {
+			StadiumDestinations.Add(Destinations[i]);
+
+		}
+	}
+
+	if (StadiumDestinations.Num() > 0)
+	{
+		int RandomIndex = FMath::RandRange(0, StadiumDestinations.Num() - 1);
+		return StadiumDestinations[RandomIndex];
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("NoStadiumDestinations"));
+	return nullptr;
+}
+

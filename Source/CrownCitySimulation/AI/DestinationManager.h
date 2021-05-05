@@ -31,9 +31,27 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<ADestination*> SchoolDestinations;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TArray<ADestination*> OfficeDestinations;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TArray<ADestination*> HospitalDestinations;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TArray<ADestination*> StadiumDestinations;
+
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	ADestination* GetRandomDestination();
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 		ADestination* GetRandomSchoolDestination();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+		ADestination* GetRandomOfficeDestination();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+		ADestination* GetRandomHospitalDestination();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+		ADestination* GetRandomStadiumDestination();
 };
